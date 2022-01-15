@@ -34,7 +34,7 @@ and executes JavaScript code outside a web browser:
 
 #  settings for mysqld and mysql client:
 *     $ sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
-** Replace the whole file with the file in repository named "ERPNext_mariadb_configuration" https://github.com/nabaajafar/Install-ERPNext-Ubuntu20.04/blob/main/ERPNext_mariadb_configuration, safe the file by press Ctrl x then enter after that write the command below:**
+** Replace the whole file with the file in repository named ["ERPNext_mariadb_configuration"](https://github.com/nabaajafar/Install-ERPNext-Ubuntu20.04/blob/main/ERPNext_mariadb_configuration) , safe the file by press Ctrl x then enter after that write the command below:**
 *     $ sudo systemctl restart mariadb
 
 #  Install Bench and ERPNext:
