@@ -89,3 +89,4 @@ To running ERPNext after turn off and on the system again you have to type follo
 * cd /opt/bench/erpnext
 * su erpnext
 * bench start
+![image](https://user-images.githubusercontent.com/66154604/149627829-57e1187f-e2c4-4f43-9da0-3637f18d1326.png)
