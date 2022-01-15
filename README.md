@@ -81,5 +81,5 @@ and executes JavaScript code outside a web browser:
 *     $ bench start
 
 Your login credentials is:
- Username: Administrator
-Password: [YOU SET IT UP DURING INSTALLATION]                             
+* Username: Administrator
+* Password: [YOU SET IT UP DURING INSTALLATION]                             
