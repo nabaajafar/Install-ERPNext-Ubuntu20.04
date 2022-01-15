@@ -80,3 +80,6 @@ and executes JavaScript code outside a web browser:
 #  Start ERPNext and finish Installation
 *     $ bench start
 
+Your login credentials is:
+ Username: Administrator
+Password: [YOU SET IT UP DURING INSTALLATION]                             
