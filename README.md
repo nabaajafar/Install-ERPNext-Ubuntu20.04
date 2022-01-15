@@ -1,31 +1,31 @@
 # Steps to Install ERPNext in Ubuntu20.04
 # First steps, you should make sure the system is up to date:
-*    $ sudo apt update
-*    $ sudo apt -y upgrade
+*      $ sudo apt update
+*      $ sudo apt -y upgrade
 
 #  Second reboot your system:
-*    $ sudo reboot
+*      $ sudo reboot
 
 #  Install Python Tools & wkhtmltopdf that help to convert html to pdf and making bills:
-*    $ sudo apt -y install vim libffi-dev python3-pip python3-dev  python3-testresources libssl-dev wkhtmltopdf
+*      $ sudo apt -y install vim libffi-dev python3-pip python3-dev  python3-testresources libssl-dev wkhtmltopdf
 
 # Install Curl, Redis and Node.js 
 for transferring data using various network protocols name stands for "Client URL",and in-memory data structure store, used as a distributed in-memory key–value database, cache and message broker, 
 and executes JavaScript code outside a web browser:
-  *  $ sudo apt install curl
-*    $ sudo curl --silent --location https://deb.nodesource.com/setup_14.x | sudo bash -
-*    $ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-*    $ echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-*    $ sudo apt-get update && sudo apt-get install yarn
-*    $ sudo apt -y install gcc g++ make nodejs redis-server
+*      $ sudo apt install curl
+*      $ sudo curl --silent --location https://deb.nodesource.com/setup_14.x | sudo bash -
+*      $ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+*      $ echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+*      $ sudo apt-get update && sudo apt-get install yarn
+*      $ sudo apt -y install gcc g++ make nodejs redis-server
 
 #  Install Nginx web server and MariaDB Database server:
-*    $ sudo apt -y install nginx
-*    $ sudo apt install mariadb-server
+*      $ sudo apt -y install nginx
+*      $ sudo apt install mariadb-server
 
 ** Change authentication plugin, do it line by line and write your own password: **
 
-*    $ sudo mysql -u root
+*      $ sudo mysql -u root
 *      USE mysql;
 *      UPDATE user SET plugin='mysql_native_password' WHERE User='root';
 *      UPDATE user SET authentication_string=password('your_password') WHERE user='root';
