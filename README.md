@@ -82,4 +82,10 @@ and executes JavaScript code outside a web browser:
 
 Your login credentials is:
 * Username: Administrator
-* Password: [YOU SET IT UP DURING INSTALLATION]                             
+* Password: [YOU SET IT UP DURING INSTALLATION]  
+                              
+
+To running ERPNext after turn off and on the system again you have to type following in terminal:
+* cd /opt/bench/erpnext
+* su erpnext
+* bench start
