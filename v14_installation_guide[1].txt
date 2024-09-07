@@ -1,0 +1,149 @@
+sudo su root
+
+iptables -I INPUT -p tcp --dport 2211 -j ACCEPT && iptables -I INPUT -p tcp --dport 80 -j ACCEPT && iptables -I INPUT -p tcp --dport 443 -j ACCEPT && iptables -I INPUT -p tcp --dport 8000 -j ACCEPT
+
+
+*To make the changes persistent after a reboot, edit /etc/rc.local and append the two iptables commands at the end of the file.
+
+
+exit
+sudo chmod o+x /home/frappe/
+sudo apt-get install git
+sudo apt-get update
+sudo apt-get install python3-dev -y
+sudo apt-get install python3-setuptools python3-pip -y
+sudo apt-get install virtualenv -y
+sudo apt install python3.10-venv -y
+sudo apt-get install software-properties-common -y
+sudo apt install mariadb-server -y
+sudo mysql_secure_installation
+n
+y
+y
+y
+y
+y
+y
+
+sudo apt-get install libmysqlclient-dev -y
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+ paste:
+[server]
+user = mysql
+pid-file = /run/mysqld/mysqld.pid
+socket = /run/mysqld/mysqld.sock
+basedir = /usr
+datadir = /var/lib/mysql
+tmpdir = /tmp
+lc-messages-dir = /usr/share/mysql
+bind-address = 127.0.0.1
+query_cache_size = 16M
+log_error = /var/log/mysql/error.log
+[mysql]
+default-character-set = utf8mb4
+[mysqld]
+innodb-file-format=barracuda
+innodb-file-per-table=1
+innodb-large-prefix=1
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci      
+sudo service mysql restart
+
+
+
+
+sudo apt-get install redis-server -y
+
+sudo apt install curl -y
+
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+source ~/.profile
+nvm install 14
+
+sudo apt-get install npm -y
+
+sudo npm install -g yarn
+
+sudo apt-get install xvfb libfontconfig wkhtmltopdf -y
+
+sudo -H pip3 install frappe-bench==5.10.1
+bench --version
+
+bench init frappe-bench --frappe-branch version-14
+
+cd frappe-bench/
+bench start
+====================================================================
+KEEP THE TERMINAL OPEN AND OPEN ONE MORE TERMINAL
+
+cd frappe-bench/
+bench new-site {your website}
+enter mysql password
+
+if collation server issue present, DO:
+=====
+$mysql -uroot -p'password' ===> no space
+MariaDB [(none)]> SET global character_set_server = 'utf8mb4';
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [(none)]> SET global collation_server = 'utf8mb4_unicode_ci';
+ERROR 2006 (HY000): Server has gone away
+No connection. Trying to reconnect...
+Connection id:    9
+Current database: *** NONE ***
+
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [(none)]> SET global collation_server = 'utf8mb4_unicode_ci';
+=====
+bench
+bench use {your website}
+
+bench get-app payments
+bench get-app erpnext --branch version-14
+bench get-app hrms
+bench --site {your website} install-app erpnext
+bench --site {your website} install-app payments
+bench --site {your website} install-app hrms
+
+YOU WILL SEE THE FIRST TERMINAL IS STOPPED, DO BENCH START AGAIN IN 1ST TERMINAL
+========================================================================
+
+
+TO SETUP PRODUCTION
+Keep the 1st terminal on
+
+go to the second
+
+sudo bench setup production frappe
+Y
+ctrl+c in 1st terminal
+you may get error
+do
+sudo bench setup production ubuntu
+y
+y
+
+
+bench restart
+check http://ip/
+if css is not loaded
+do
+sudo chmod 755 /home/frappe
+
+bench restart
+
+
+Good to go!
+===============================
+
+install SSL:
+
+sudo apt install snapd
+sudo snap install core; sudo snap refresh core
+sudo apt-get remove certbot
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo certbot --nginx
